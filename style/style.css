@@ -7,7 +7,7 @@
 
 body{
     background-color: #e3e3e3;
-    background-image: url('cadeirante.png');
+    background-image: url('/assets/cadeirante.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right;
@@ -50,4 +50,10 @@ body{
 }
 .botao_jogo:hover{
     background-color: #000000;
+}
+
+.conteudo {
+    width: 40%;
+    padding-left: 10%;
+    padding-top: 2%;
 }
