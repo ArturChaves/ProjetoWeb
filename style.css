@@ -51,3 +51,9 @@ body{
 .botao_jogo:hover{
     background-color: #000000;
 }
+
+.conteudo {
+    width: 40%;
+    padding-left: 10%;
+    padding-top: 2%;
+}
