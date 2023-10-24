@@ -4,8 +4,15 @@
 }
 
 body{
-    background-color: grey;
+    background-color: transparent;
     
+}
+
+.imagem_fundo {
+    background-image: url('Fundo.png');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .menu {
@@ -59,9 +66,24 @@ body{
     display: block;
     position: absolute;
     width: 1024px;
-    height: 576px;    
+    height: 576px;   
+    margin-top: 30px; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: black;
+}
+
+#teste img{
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: -1;
+}
+
+#botao_jogar{
+    position: absolute;
+    top: 58%;
+    left: 30%;
 }
