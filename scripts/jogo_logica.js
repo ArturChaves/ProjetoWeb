@@ -233,7 +233,7 @@ class Boundary7 {
         this.height = 30
     }
     draw() {
-        c.fillStyle = 'rgba(255,200,150,1'
+        c.fillStyle = 'rgba(255,200,150,0'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
