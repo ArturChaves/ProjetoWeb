@@ -338,6 +338,8 @@ window.addEventListener('keydown', (e) => {
                 console.log("ESPACO AMARELO");
                 background.image = imagerampa1;
                 podeandar = true;
+                moving =
+                terminar_fase();
             } else if (isOnBlueObject) {
                 console.log("ESPACO AZUL");
                 background.image = imagerampa2;
@@ -599,20 +601,3 @@ window.addEventListener('keyup', (e) => {
             break
     }
 })
-
-function comecar() {
-    let obj = document.getElementById("myCanvas");
-    let obj2 = document.getElementById("menu");
-    if (obj2.style.display === "none") {
-        obj2.style.display = "block";
-    }
-    else {
-        obj2.style.display = "none";
-    }
-    if (obj.style.display === "block") {
-        obj.style.display = "none";
-    }
-    else {
-        obj.style.display = "block";
-    }
-}
