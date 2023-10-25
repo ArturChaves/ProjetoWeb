@@ -224,6 +224,51 @@ colisaoBlock2.forEach((row, i) => {
 
 
 
+class Boundary7 {
+    static width = 64
+    static height = 64
+    constructor({ position }) {
+        this.position = position
+        this.width = 64
+        this.height = 30
+    }
+    draw() {
+        c.fillStyle = 'rgba(255,200,150,1'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+const bauvitoria = []
+for (let i = 0; i < bau.length; i += 150) {
+    bauvitoria.push(bau.slice(i,150+i))
+}
+
+const boundaries7 = []
+const offset7 = {
+    x: -6670,
+    y: -3950
+}
+
+bauvitoria.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 2178)
+            boundaries7.push(
+                new Boundary7({
+                    position: {
+                        x: j * Boundary7.width + offset7.x,
+                        y: i * Boundary7.height + offset7.y
+                    }
+                })
+            )
+    })
+})
+
+
+
+
+
+
+
 
 
 c.fillStyle = 'white'
@@ -317,7 +362,7 @@ const keys = {
 }
 
 
-const movables = [background, ...boundaries, ...boundaries2, ...boundaries3, ...boundaries4, ...boundaries5]
+const movables = [background, ...boundaries, ...boundaries2, ...boundaries3, ...boundaries4, ...boundaries5, ...boundaries7]
 
 function rectangularCollision ({rectangle1, rectangle2}) {
     return(rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
@@ -338,8 +383,6 @@ window.addEventListener('keydown', (e) => {
                 console.log("ESPACO AMARELO");
                 background.image = imagerampa1;
                 podeandar = true;
-                moving =
-                terminar_fase();
             } else if (isOnBlueObject) {
                 console.log("ESPACO AZUL");
                 background.image = imagerampa2;
@@ -368,6 +411,9 @@ function animate() {
     boundaries5.forEach(boundary => {
         boundary.draw();
     })
+    boundaries7.forEach(boundary => {
+        boundary.draw();
+    })
     player.draw()
     foreground.draw()
 
@@ -393,173 +439,192 @@ function animate() {
         }
     }
 
-
-    if (keys.w.pressed){
-        for (let i = 0; i < boundaries3.length; i++) {
-            const boundary = boundaries3[i];
-            const boundary2 = boundaries5[i];
-            if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x,
-                        y: boundary.position.y + 5
-                    }
-                } })) {
-                console.log("Colidindo com PASSAGEM W...");
-                keys.w.pressed = podeandar;
-            }
-            else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
-                    position: {
-                        x: boundary2.position.x,
-                        y: boundary2.position.y + 5
-                    }
-                } })) {
-                console.log("Colidindo com PASSAGEM DOIS W...");
-                keys.w.pressed = podeandar2;
-            }
-        }
-    }
-    else if (keys.a.pressed){
-        for (let i = 0; i < boundaries3.length; i++) {
-            const boundary = boundaries3[i];
-            const boundary2 = boundaries5[i];
-            if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x + 5,
-                        y: boundary.position.y
-                    }
-                }
-            })) {
-                console.log("Colidindo com PASSAGEM A...");
-                keys.a.pressed = podeandar;
-            }
-            else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
-                    position: {
-                        x: boundary2.position.x + 5,
-                        y: boundary2.position.y
-                    }
-                } })) {
-                console.log("Colidindo com PASSAGEM DOIS A...");
-                keys.a.pressed = podeandar2;
-            }
-        }
-    }
-    else if (keys.d.pressed){
-        for (let i = 0; i < boundaries3.length; i++) {
-            const boundary = boundaries3[i];
-            const boundary2 = boundaries5[i];
-            if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x - 5,
-                        y: boundary.position.y
-                    }
-                }
-            })) {
-                console.log("Colidindo com PASSAGEM D...");
-                keys.d.pressed = podeandar;
-            }
-            else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
-                    position: {
-                        x: boundary2.position.x - 5,
-                        y: boundary2.position.y
-                    }
-                } })) {
-                console.log("Colidindo com PASSAGEM DOIS D...");
-                keys.d.pressed = podeandar2;
-            }
+    for (let i = 0; i < boundaries7.length; i++) {
+        const boundary = boundaries7[i];
+        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
+            terminar_fase();
+            break;
         }
     }
 
-
-
-
-
-
-
-    if (keys.w.pressed && lastKey === 'w') {
-        for (let i = 0; i < boundaries.length; i++){
-            const boundary = boundaries[i]
-            if (rectangularCollision({
-                rectangle1: player,
-                rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x,
-                        y: boundary.position.y + 5
-                    }
+    let playerReachedChest = false;
+    
+    for (let i = 0; i < boundaries7.length; i++) {
+        const boundary = boundaries7[i];
+        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
+            terminar_fase();
+            playerReachedChest = true; // Player reached the chest
+            break;
+        }
+    }
+    
+    if (!playerReachedChest) {
+        if (keys.w.pressed){
+            for (let i = 0; i < boundaries3.length; i++) {
+                const boundary = boundaries3[i];
+                const boundary2 = boundaries5[i];
+                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x,
+                            y: boundary.position.y + 5
+                        }
+                    } })) {
+                    console.log("Colidindo com PASSAGEM W...");
+                    keys.w.pressed = podeandar;
                 }
-            })
-            ) {
-                moving = false
-                break
+                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                        position: {
+                            x: boundary2.position.x,
+                            y: boundary2.position.y + 5
+                        }
+                    } })) {
+                    console.log("Colidindo com PASSAGEM DOIS W...");
+                    keys.w.pressed = podeandar2;
+                }
             }
         }
-        if (moving)
+        else if (keys.a.pressed){
+            for (let i = 0; i < boundaries3.length; i++) {
+                const boundary = boundaries3[i];
+                const boundary2 = boundaries5[i];
+                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x + 5,
+                            y: boundary.position.y
+                        }
+                    }
+                })) {
+                    console.log("Colidindo com PASSAGEM A...");
+                    keys.a.pressed = podeandar;
+                }
+                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                        position: {
+                            x: boundary2.position.x + 5,
+                            y: boundary2.position.y
+                        }
+                    } })) {
+                    console.log("Colidindo com PASSAGEM DOIS A...");
+                    keys.a.pressed = podeandar2;
+                }
+            }
+        }
+        else if (keys.d.pressed){
+            for (let i = 0; i < boundaries3.length; i++) {
+                const boundary = boundaries3[i];
+                const boundary2 = boundaries5[i];
+                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x - 5,
+                            y: boundary.position.y
+                        }
+                    }
+                })) {
+                    console.log("Colidindo com PASSAGEM D...");
+                    keys.d.pressed = podeandar;
+                }
+                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                        position: {
+                            x: boundary2.position.x - 5,
+                            y: boundary2.position.y
+                        }
+                    } })) {
+                    console.log("Colidindo com PASSAGEM DOIS D...");
+                    keys.d.pressed = podeandar2;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    if (!playerReachedChest) {
+        if (keys.w.pressed && lastKey === 'w') {
+            for (let i = 0; i < boundaries.length; i++){
+                const boundary = boundaries[i]
+                if (rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x,
+                            y: boundary.position.y + 5
+                        }
+                    }
+                })
+                ) {
+                    moving = false
+                    break
+                }
+            }
+            if (moving)
+                movables.forEach(movable => {
+                    movable.position.y += 5
+                })
+        }
+        else if (keys.a.pressed && lastKey === 'a') {
+            for (let i = 0; i < boundaries.length; i++){
+                const boundary = boundaries[i]
+                if (rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x + 5,
+                            y: boundary.position.y
+                        }
+                    }
+                })
+                ) {
+                    moving = false
+                    break
+                }
+            }
+            if (moving)
+                movables.forEach(movable => {
+                    movable.position.x += 5
+            })}
+        else if (keys.s.pressed && lastKey === 's') {
+            for (let i = 0; i < boundaries.length; i++){
+                const boundary = boundaries[i]
+                if (rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x,
+                            y: boundary.position.y - 5
+                        }
+                    }
+                })
+                ) {
+                    moving = false
+                    break
+                }
+            }
+            if (moving)
             movables.forEach(movable => {
-                movable.position.y += 5
-            })
-    }
-    else if (keys.a.pressed && lastKey === 'a') {
-        for (let i = 0; i < boundaries.length; i++){
-            const boundary = boundaries[i]
-            if (rectangularCollision({
-                rectangle1: player,
-                rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x + 5,
-                        y: boundary.position.y
+                movable.position.y -= 5
+            })}
+        else if (keys.d.pressed && lastKey === 'd') {
+            for (let i = 0; i < boundaries.length; i++){
+                const boundary = boundaries[i]
+                if (rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...boundary,
+                        position: {
+                            x: boundary.position.x - 5,
+                            y: boundary.position.y
+                        }
                     }
+                })
+                ) {
+                    moving = false
+                    break
                 }
-            })
-            ) {
-                moving = false
-                break
             }
-        }
-        if (moving)
+            if (moving)
             movables.forEach(movable => {
-                movable.position.x += 5
-        })}
-    else if (keys.s.pressed && lastKey === 's') {
-        for (let i = 0; i < boundaries.length; i++){
-            const boundary = boundaries[i]
-            if (rectangularCollision({
-                rectangle1: player,
-                rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x,
-                        y: boundary.position.y - 5
-                    }
-                }
-            })
-            ) {
-                moving = false
-                break
-            }
-        }
-        if (moving)
-        movables.forEach(movable => {
-            movable.position.y -= 5
-        })}
-    else if (keys.d.pressed && lastKey === 'd') {
-        for (let i = 0; i < boundaries.length; i++){
-            const boundary = boundaries[i]
-            if (rectangularCollision({
-                rectangle1: player,
-                rectangle2: {...boundary,
-                    position: {
-                        x: boundary.position.x - 5,
-                        y: boundary.position.y
-                    }
-                }
-            })
-            ) {
-                moving = false
-                break
-            }
-        }
-        if (moving)
-        movables.forEach(movable => {
-            movable.position.x -= 5
-        })}
+                movable.position.x -= 5
+            })}}
 }
 animate()
 
