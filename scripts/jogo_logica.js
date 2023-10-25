@@ -230,13 +230,13 @@ c.fillStyle = 'white'
 c.fillRect(0,0,canvas.width,canvas.height)
 
 const image = new Image()
-image.src = './img/mapa200giga.png'
+image.src = './img/map-new-alavanca.png'
 
 const imagerampa1 = new Image()
-imagerampa1.src = './img/mapa200giga2.png'
+imagerampa1.src = './img/map-new-alavanca2.png'
 
 const imagerampa2 = new Image()
-imagerampa2.src = './img/mapa200giga3.png'
+imagerampa2.src = './img/map-new-alavanca3.png'
 
 const foregroundImage = new Image()
 foregroundImage.src = './img/sombra.png'
