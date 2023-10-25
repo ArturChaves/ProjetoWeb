@@ -20,15 +20,21 @@
         <input type="image" src="img/botao_jogar.png" height="70" value="Jogar" id="botao_jogar" onclick="jogar_novamente()">
         <img src="img/Tela Final Jogo.png">
     </div>
+
+    <div id='como_jogar'>
+        <input type="image" src="img/botao_fechar.png" height="70" value="Fechar" id="botao_fechar" onclick="fechar_comojogar()">
+        <img src="img/Tela ComoJogar.png">
+    </div>
     
    <div id="teste">
-    <input type="image" src="img/botao_jogar.png" height="70" value="Jogar" id="botao_jogar" onclick="inciar()">
-    <img src="img/Tela Inicial Jogo2.png">
+    <input type="image" src="img/botao_jogar.png" value="Jogar" id="botao_jogar" onclick="iniciar()">
+    <input type="image" src="img/botao_comojogar.png" value="Como Jogar" id="botao_comojogar" onclick="f_comojogar()">
+    <img src="img/Tela Inicial Jogo3.png">
    </div>
     
     <div id="canvas">
         <canvas></canvas>
-       </div>     
+    </div>     
        
     <script src="data/colisao.js"></script>
     <script src="./scripts/jogo_logica.js"></script>

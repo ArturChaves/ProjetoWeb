@@ -1,8 +1,9 @@
 const menu_jogo = document.getElementById('teste');
+const comojogar = document.getElementById('como_jogar');
 const fim = document.getElementById('fim_do_jogo');
 const jogo =  document.getElementById('canvas');
 
-function inciar(){
+function iniciar(){
     menu_jogo.style.display = 'none'
     jogo.style.display = 'block'
 }
@@ -18,4 +19,20 @@ function terminar_fase(){
 function jogar_novamente(){
     fim.style.display = 'none'
     location.reload()
+}
+
+// function comojogar(){
+//     menu_jogo.style.display = 'none'
+//     jogo.style.display = 'block'
+// }
+
+function f_comojogar(){
+    comojogar.style.display = 'block'
+    menu_jogo.style.display = 'block'
+    menu_jogo.style.zIndex = -1
+}
+
+function fechar_comojogar(){
+    comojogar.style.display = 'none'
+    menu_jogo.style.zIndex = 1
 }

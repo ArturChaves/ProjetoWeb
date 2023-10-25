@@ -85,8 +85,14 @@ body{
 
 #botao_jogar{
     position: absolute;
-    top: 58%;
-    left: 41%;
+    top: 56.2%;
+    left: 40.6%;
+}
+
+#botao_comojogar{
+    position: absolute;
+    top: 72.6%;
+    left: 36%;
 }
 
 #fim_do_jogo{
@@ -107,4 +113,31 @@ body{
     top: 0%;
     left: 0%;
     z-index: -1;
+}
+
+#como_jogar{
+    display: block;
+    position: absolute;
+    width: 1024px;
+    height: 576px;   
+    margin-top: 30px; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+}
+
+#como_jogar img{
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: -1;
+}
+
+#botao_fechar{
+    height: 46px;
+    position: absolute;
+    top: 14.1%;
+    left: 78.3%;
 }
