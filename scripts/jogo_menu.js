@@ -1,4 +1,5 @@
 const menu_jogo = document.getElementById('teste');
+const fim = document.getElementById('fim_do_jogo');
 const jogo =  document.getElementById('canvas');
 
 function inciar(){
@@ -8,9 +9,13 @@ function inciar(){
 
 
 function terminar_fase(){
-    menu_jogo.style.display = 'block'
-    jogo.style.display = 'none'
+    fim.style.display = 'block'
+    jogo.style.display = 'block'
+    jogo.style.zIndex = -1
 
+}
 
-
+function jogar_novamente(){
+    fim.style.display = 'none'
+    location.reload()
 }
