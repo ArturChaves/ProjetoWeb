@@ -479,7 +479,7 @@ function animate() {
         const boundary = boundaries7[i];
         if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
             terminar_fase();
-            playerReachedChest = true; // Player reached the chest
+            playerReachedChest = true; 
             break;
         }
     }

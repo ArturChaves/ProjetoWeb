@@ -21,15 +21,10 @@ function jogar_novamente(){
     location.reload()
 }
 
-// function comojogar(){
-//     menu_jogo.style.display = 'none'
-//     jogo.style.display = 'block'
-// }
-
 function f_comojogar(){
     comojogar.style.display = 'block'
     menu_jogo.style.display = 'block'
-    menu_jogo.style.zIndex = -1
+    menu_jogo.style.zIndex = -2
 }
 
 function fechar_comojogar(){
