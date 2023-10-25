@@ -12,8 +12,8 @@ function iniciar(){
 function terminar_fase(){
     fim.style.display = 'block'
     jogo.style.display = 'block'
+    comojogar.style.display = 'none'
     jogo.style.zIndex = -1
-
 }
 
 function jogar_novamente(){
