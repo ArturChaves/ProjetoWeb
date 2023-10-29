@@ -81,9 +81,9 @@ input[type="file"] {
     margin: 10px 0;
 }
 
-#Sobre, #Mapa_da_empatia, #ODS, #Entrevista, #Conclusão, #Simulação {
+.conteudo {
     background-color: #fff;
     padding: 20px;
     margin: 20px auto;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.295)
 }
