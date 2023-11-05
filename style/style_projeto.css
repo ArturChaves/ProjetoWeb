@@ -1,8 +1,89 @@
-body{
-    background-color: #e3e3e3;
-    background-image: url('/assets/cadeirante.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: right;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
+.menu {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 0;
+}
+
+.botao_menu{
+    color: #151515;
+    font-family: "Poppins", sans-serif;
+    padding: 9px 37px 9px 37px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: .25s;
+}
+.botao_menu:hover{
+    color: #0297f2;
+    text-decoration: underline;
+
+}
+
+.botao_jogo{
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    padding: 9px 37px 9px 37px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: .25s;
+    background-color: #0297f2;
+    border-radius: 20px;
+}
+
+.botao_jogo:hover{
+    background-color: #000000;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+    margin: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    color: #666;
+    margin-top: 15px;
+}
+
+p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+}
+
+iframe {
+    margin-left: 32%;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+.conteudo {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.295)
+}
