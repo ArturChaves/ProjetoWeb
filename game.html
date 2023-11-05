@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/style/game.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body class="imagem_fundo">
     <div class="menu">
@@ -17,7 +20,7 @@
     
  
     <div id='fim_do_jogo'>
-        <input type="image" src="img/botao_jogar.png" height="70" value="Jogar" id="botao_jogar" onclick="jogar_novamente()">
+        <input type="image" src="img/botao_voltar.png" height="70" value="Jogar" id="botao_voltar" onclick="jogar_novamente()">
         <img src="img/Tela Final Jogo.png">
         <h1 id="Timer"> Timer</h1>
     </div>
@@ -30,7 +33,15 @@
    <div id="teste">
     <input type="image" src="img/botao_jogar.png" value="Jogar" id="botao_jogar" onclick="iniciar()">
     <input type="image" src="img/botao_comojogar.png" value="Como Jogar" id="botao_comojogar" onclick="f_comojogar()">
-    <img src="img/Tela Inicial Jogo3.png">
+    <div id="nivel_div">
+        <h2 id="nome_nivel">Selecione o Nível:</h2>
+        <select name="nivel" id="nivel">
+            <option value="nivel1">Fácil</option>
+            <option value="nivel2">Médio</option>
+            <option value="nivel3">Difícil</option>
+        </select>
+    </div>
+    <img src="img/Tela Inicial Jogo2.png">
    </div>
     
     <div id="canvas">

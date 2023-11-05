@@ -85,13 +85,18 @@ body{
 
 #botao_jogar{
     position: absolute;
-    top: 56.2%;
+    top: 52.2%;
     left: 40.6%;
+}
+#botao_voltar{
+    position: absolute;
+    top: 66.4%;
+    left: 40.9%;
 }
 
 #botao_comojogar{
     position: absolute;
-    top: 72.6%;
+    top: 68.6%;
     left: 36%;
 }
 
@@ -139,5 +144,55 @@ body{
     height: 46px;
     position: absolute;
     top: 14.1%;
-    left: 78.3%;
+    left: 82%;
 }
+
+#Timer{
+    position: absolute;
+    top: 53%;
+    left: 32%;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    text-shadow: 3px 3px black;
+
+}
+
+#nome_nivel{
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    text-shadow: 3px 3px black;
+}
+
+#nivel_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 84%;
+    left: 40.8%;
+}
+
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: #5c6664;
+    background-image: none;
+    flex: 1;
+    padding: 8px 70px;
+    cursor:pointer;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.315) 5px 5px 10px;
+ }
+ 
+ 

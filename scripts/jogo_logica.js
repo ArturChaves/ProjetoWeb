@@ -26,7 +26,7 @@ class Boundary {
 const boundaries = []
 const offset = {
     x: -6670,
-    y: -3950
+    y: -3950    
 }
 
 collisionsMap.forEach((row, i) => {
@@ -284,7 +284,21 @@ const imagerampa2 = new Image()
 imagerampa2.src = './img/map-new-alavanca3.png'
 
 const foregroundImage = new Image()
-foregroundImage.src = './img/sombra.png'
+function selecionanivel() {
+    if (document.getElementById("nivel").value === "nivel1") {
+        console.log("Nivel 1")
+        foregroundImage.src = './img/sombra1.png'
+    } else if (document.getElementById("nivel").value === "nivel2") {
+        console.log("Nivel 2")
+        foregroundImage.src = './img/sombra2.png'
+    } else if (document.getElementById("nivel").value === "nivel3") {
+        console.log("Nivel 3")
+        foregroundImage.src = './img/sombra3.png'
+    }
+}
+
+// const foregroundImage = new Image()
+
 
 const playerDownImage = new Image()
 playerDownImage.src = './img/persDown.png'
@@ -370,6 +384,7 @@ const foreground = new Sprite({
         y: 0
     },
     image: foregroundImage
+    
 })
 
 const keys = {
@@ -442,6 +457,7 @@ function animate() {
     })
     player.draw()
     foreground.draw()
+    selecionanivel()
 
     let moving = true
 
