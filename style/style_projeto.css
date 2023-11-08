@@ -121,3 +121,7 @@ input[type="file"] {
     font-size: 21px;
     padding: 6px 22px;
 }
+
+#mensagem_denuncia {
+    display: none;
+}
