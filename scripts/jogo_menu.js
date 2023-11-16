@@ -23,7 +23,7 @@ function terminar_fase(){
     if(!tempo_final_chamado){
         tempo = tempo_final();
         tempo_final_chamado = true
-        timer.innerHTML = `Tempo: ${tempo} segundos`
+        timer.innerHTML = `Tempo: ${tempo.toFixed(2)} segundos`
     }
     
 
