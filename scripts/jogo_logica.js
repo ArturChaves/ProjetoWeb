@@ -83,20 +83,6 @@ colisaoAlavanca.forEach((row, i) => {
     })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Boundary3 {
     static width = 64
     static height = 64
@@ -136,8 +122,6 @@ colisaoBlock.forEach((row, i) => {
             )
     })
 })
-
-
 
 class Boundary4 {
     static width = 64
@@ -179,9 +163,6 @@ colisaoAlavanca2.forEach((row, i) => {
     })
 })
 
-
-
-
 class Boundary5 {
     static width = 64
     static height = 64
@@ -221,9 +202,6 @@ colisaoBlock2.forEach((row, i) => {
     })
 })
 
-
-
-
 class Boundary7 {
     static width = 64
     static height = 64
@@ -262,14 +240,6 @@ bauvitoria.forEach((row, i) => {
             )
     })
 })
-
-
-
-
-
-
-
-
 
 c.fillStyle = 'white'
 c.fillRect(0,0,canvas.width,canvas.height)
@@ -405,27 +375,25 @@ const keys = {
 
 const movables = [background, ...boundaries, ...boundaries2, ...boundaries3, ...boundaries4, ...boundaries5, ...boundaries7]
 
-function rectangularCollision ({rectangle1, rectangle2}) {
-    return(rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
-        rectangle1.position.x <= rectangle2.position.x + rectangle2.width &&
-        rectangle1.position.y <= rectangle2.position.y + rectangle2.height &&
-        rectangle1.position.y + rectangle1.height >= rectangle2.position.y)
+function rectangularCollision ({retangulo1, retangulo2}) {
+    return(retangulo1.position.x + retangulo1.width >= retangulo2.position.x &&
+        retangulo1.position.x <= retangulo2.position.x + retangulo2.width &&
+        retangulo1.position.y <= retangulo2.position.y + retangulo2.height &&
+        retangulo1.position.y + retangulo1.height >= retangulo2.position.y)
 }
 
-let isOnYellowObject = false;
-let isOnBlueObject = false;
+let objetoAmarelo = false;
+let objetoAzul = false;
 let podeandar = false;
 let podeandar2 = false;
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case ' ':
-            if (isOnYellowObject) {
-                console.log("ESPACO AMARELO");
+            if (objetoAmarelo) {
                 background.image = imagerampa1;
                 podeandar = true;
-            } else if (isOnBlueObject) {
-                console.log("ESPACO AZUL");
+            } else if (objetoAzul) {
                 background.image = imagerampa2;
                 podeandar2 = true;
             }
@@ -463,27 +431,27 @@ function animate() {
 
     for (let i = 0; i < boundaries2.length; i++) {
         const boundary = boundaries2[i];
-        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
-            isOnYellowObject = true;
+        if (rectangularCollision({ retangulo1: player, retangulo2: boundary })) {
+            objetoAmarelo = true;
             break;
         } else {
-            isOnYellowObject = false;
+            objetoAmarelo = false;
         }
     }
 
     for (let i = 0; i < boundaries4.length; i++) {
         const boundary = boundaries4[i];
-        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
-            isOnBlueObject = true;
+        if (rectangularCollision({ retangulo1: player, retangulo2: boundary })) {
+            objetoAzul = true;
             break;
         } else {
-            isOnBlueObject = false;
+            objetoAzul = false;
         }
     }
 
     for (let i = 0; i < boundaries7.length; i++) {
         const boundary = boundaries7[i];
-        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
+        if (rectangularCollision({ retangulo1: player, retangulo2: boundary })) {
             terminar_fase();
             break;
         }
@@ -493,7 +461,7 @@ function animate() {
     
     for (let i = 0; i < boundaries7.length; i++) {
         const boundary = boundaries7[i];
-        if (rectangularCollision({ rectangle1: player, rectangle2: boundary })) {
+        if (rectangularCollision({ retangulo1: player, retangulo2: boundary })) {
             terminar_fase();
             playerReachedChest = true; 
             break;
@@ -506,22 +474,20 @@ function animate() {
             for (let i = 0; i < boundaries3.length; i++) {
                 const boundary = boundaries3[i];
                 const boundary2 = boundaries5[i];
-                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary,
                         position: {
                             x: boundary.position.x,
-                            y: boundary.position.y + 5
+                            y: boundary.position.y + 10
                         }
                     } })) {
-                    console.log("Colidindo com PASSAGEM W...");
                     keys.w.pressed = podeandar;
                 }
-                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                else if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary2,
                         position: {
                             x: boundary2.position.x,
-                            y: boundary2.position.y + 5
+                            y: boundary2.position.y + 10
                         }
                     } })) {
-                    console.log("Colidindo com PASSAGEM DOIS W...");
                     keys.w.pressed = podeandar2;
                 }
             }
@@ -531,23 +497,21 @@ function animate() {
             for (let i = 0; i < boundaries3.length; i++) {
                 const boundary = boundaries3[i];
                 const boundary2 = boundaries5[i];
-                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary,
                         position: {
-                            x: boundary.position.x + 5,
+                            x: boundary.position.x + 10,
                             y: boundary.position.y
                         }
                     }
                 })) {
-                    console.log("Colidindo com PASSAGEM A...");
                     keys.a.pressed = podeandar;
                 }
-                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                else if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary2,
                         position: {
-                            x: boundary2.position.x + 5,
+                            x: boundary2.position.x + 10,
                             y: boundary2.position.y
                         }
                     } })) {
-                    console.log("Colidindo com PASSAGEM DOIS A...");
                     keys.a.pressed = podeandar2;
                 }
             }
@@ -557,31 +521,26 @@ function animate() {
             for (let i = 0; i < boundaries3.length; i++) {
                 const boundary = boundaries3[i];
                 const boundary2 = boundaries5[i];
-                if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary,
+                if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary,
                         position: {
-                            x: boundary.position.x - 5,
+                            x: boundary.position.x - 10,
                             y: boundary.position.y
                         }
                     }
                 })) {
-                    console.log("Colidindo com PASSAGEM D...");
                     keys.d.pressed = podeandar;
                 }
-                else if (rectangularCollision({ rectangle1: player, rectangle2: {...boundary2,
+                else if (rectangularCollision({ retangulo1: player, retangulo2: {...boundary2,
                         position: {
-                            x: boundary2.position.x - 5,
+                            x: boundary2.position.x - 10,
                             y: boundary2.position.y
                         }
                     } })) {
-                    console.log("Colidindo com PASSAGEM DOIS D...");
                     keys.d.pressed = podeandar2;
                 }
             }
         }
     }
-
-
-
 
     player.moving = false
     if (!playerReachedChest) {
@@ -591,11 +550,11 @@ function animate() {
             for (let i = 0; i < boundaries.length; i++){
                 const boundary = boundaries[i]
                 if (rectangularCollision({
-                    rectangle1: player,
-                    rectangle2: {...boundary,
+                    retangulo1: player,
+                    retangulo2: {...boundary,
                         position: {
                             x: boundary.position.x,
-                            y: boundary.position.y + 5
+                            y: boundary.position.y + 10
                         }
                     }
                 })
@@ -606,7 +565,7 @@ function animate() {
             }
             if (moving)
                 movables.forEach(movable => {
-                    movable.position.y += 5
+                    movable.position.y += 10
                 })
         }
         else if (keys.a.pressed && lastKey === 'a') {
@@ -615,10 +574,10 @@ function animate() {
             for (let i = 0; i < boundaries.length; i++){
                 const boundary = boundaries[i]
                 if (rectangularCollision({
-                    rectangle1: player,
-                    rectangle2: {...boundary,
+                    retangulo1: player,
+                    retangulo2: {...boundary,
                         position: {
-                            x: boundary.position.x + 5,
+                            x: boundary.position.x + 10,
                             y: boundary.position.y
                         }
                     }
@@ -630,7 +589,7 @@ function animate() {
             }
             if (moving)
                 movables.forEach(movable => {
-                    movable.position.x += 5
+                    movable.position.x += 10
             })}
         else if (keys.s.pressed && lastKey === 's') {
             player.moving = true
@@ -638,11 +597,11 @@ function animate() {
             for (let i = 0; i < boundaries.length; i++){
                 const boundary = boundaries[i]
                 if (rectangularCollision({
-                    rectangle1: player,
-                    rectangle2: {...boundary,
+                    retangulo1: player,
+                    retangulo2: {...boundary,
                         position: {
                             x: boundary.position.x,
-                            y: boundary.position.y - 5
+                            y: boundary.position.y - 10
                         }
                     }
                 })
@@ -653,7 +612,7 @@ function animate() {
             }
             if (moving)
             movables.forEach(movable => {
-                movable.position.y -= 5
+                movable.position.y -= 10
             })}
         else if (keys.d.pressed && lastKey === 'd') {
             player.moving = true
@@ -661,10 +620,10 @@ function animate() {
             for (let i = 0; i < boundaries.length; i++){
                 const boundary = boundaries[i]
                 if (rectangularCollision({
-                    rectangle1: player,
-                    rectangle2: {...boundary,
+                    retangulo1: player,
+                    retangulo2: {...boundary,
                         position: {
-                            x: boundary.position.x - 5,
+                            x: boundary.position.x - 10,
                             y: boundary.position.y
                         }
                     }
@@ -676,7 +635,7 @@ function animate() {
             }
             if (moving)
             movables.forEach(movable => {
-                movable.position.x -= 5
+                movable.position.x -= 10
             })}}
 }
 animate()
@@ -688,7 +647,15 @@ window.addEventListener('keydown', (e) => {
             keys.w.pressed = true
             lastKey = 'w'
             break
+        case 'W':
+            keys.w.pressed = true
+            lastKey = 'w'
+            break
         case 'a':
+            keys.a.pressed = true
+            lastKey = 'a'
+            break
+        case 'A':
             keys.a.pressed = true
             lastKey = 'a'
             break
@@ -696,7 +663,15 @@ window.addEventListener('keydown', (e) => {
             keys.s.pressed = true
             lastKey = 's'
             break
+        case 'S':
+            keys.s.pressed = true
+            lastKey = 's'
+            break
         case 'd':
+            keys.d.pressed = true
+            lastKey = 'd'
+            break
+        case 'D':
             keys.d.pressed = true
             lastKey = 'd'
             break
@@ -708,6 +683,9 @@ window.addEventListener('keyup', (e) => {
         case 'w':
             keys.w.pressed = false
             break
+        case 'W':
+            keys.w.pressed = false
+            break
         case 'a':
             keys.a.pressed = false
             break
@@ -715,6 +693,15 @@ window.addEventListener('keyup', (e) => {
             keys.s.pressed = false
             break
         case 'd':
+            keys.d.pressed = false
+            break
+        case 'A':
+            keys.a.pressed = false
+            break
+        case 'S':
+            keys.s.pressed = false
+            break
+        case 'D':
             keys.d.pressed = false
             break
     }
