@@ -8,6 +8,7 @@ const collisionsMap = []
 for (let i = 0; i < collisions.length; i += 150) {
     collisionsMap.push(collisions.slice(i,150+i))
 }
+
 class Boundary {
     static width = 64
     static height = 64
@@ -267,9 +268,6 @@ function selecionanivel() {
     }
 }
 
-// const foregroundImage = new Image()
-
-
 const playerDownImage = new Image()
 playerDownImage.src = './img/persDown.png'
 
@@ -282,8 +280,6 @@ playerLeftImage.src = './img/persLeft.png'
 const playerRightImage = new Image()
 playerRightImage.src = './img/persRight.png'
 
-
-//--------------
 class Sprite {
     constructor({ position, velocity, image, frames = {max: 1}, sprites}) {
         this.position = position

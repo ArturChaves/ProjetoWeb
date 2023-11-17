@@ -13,7 +13,6 @@ function iniciar(){
     tempo_incial()
 }
 
-
 function terminar_fase(){
     fim.style.display = 'block'
 
@@ -25,8 +24,6 @@ function terminar_fase(){
         tempo_final_chamado = true
         timer.innerHTML = `Tempo: ${tempo.toFixed(2)} segundos`
     }
-    
-
 }
 
 function jogar_novamente(){
