@@ -254,17 +254,17 @@ imagerampa1.src = './img/map-new-alavanca2.png'
 const imagerampa2 = new Image()
 imagerampa2.src = './img/map-new-alavanca3.png'
 
-const foregroundImage = new Image()
+const nivel_dificuldade = new Image()
 function selecionanivel() {
     if (document.getElementById("nivel").value === "nivel1") {
         console.log("Nivel 1")
-        foregroundImage.src = './img/sombra1.png'
+        nivel_dificuldade.src = './img/sombra1.png'
     } else if (document.getElementById("nivel").value === "nivel2") {
         console.log("Nivel 2")
-        foregroundImage.src = './img/sombra2.png'
+        nivel_dificuldade.src = './img/sombra2.png'
     } else if (document.getElementById("nivel").value === "nivel3") {
         console.log("Nivel 3")
-        foregroundImage.src = './img/sombra3.png'
+        nivel_dificuldade.src = './img/sombra3.png'
     }
 }
 
@@ -349,7 +349,7 @@ const foreground = new Sprite({
         x: 0,
         y: 0
     },
-    image: foregroundImage
+    image: nivel_dificuldade
     
 })
 
